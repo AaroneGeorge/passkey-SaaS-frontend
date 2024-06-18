@@ -54,7 +54,7 @@ const LoginPage = () => {
         </div>
       </div> 
       <div className="min-h-screen flex flex-col justify-center items-center">
-        <div className="bg-black bg-opacity-80 shadow-lg rounded-lg p-8 w-full max-w-2xl mt-8">
+        <div className="bg-black bg-opacity-80 shadow-lg rounded-lg p-8 w-full max-w-2xl">
           <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full text-center">
             Login
           </h2>

@@ -4,6 +4,7 @@ import Root from "./pages/root";
 import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 import Home from "./pages/Home"
+import ProjectDetails from "./pages/ProjectDetails"
 
 const App = () => (
   <Router>
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/register" element={<SignupPage/>} />
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/home" element={<Home />} />
+      <Route path="/project/:projectId" element={<ProjectDetails />} />
     </Routes>
   </Router>
 );
