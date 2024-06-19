@@ -20,7 +20,7 @@ const root = () => (
         <Stats />
         <Business />
         <Billing />
-        <CardDeal />
+        {/* <CardDeal /> */}
         <Testimonials />
         <Clients />
         <CTA />
