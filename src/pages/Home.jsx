@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 import Navbar from "../components/Navbar";
 import styles from "../style";
-
+import { layout } from "../style";
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
@@ -41,12 +41,12 @@ const Home = () => {
       >
         <div className={`${styles.boxWidth} h-full`}>
           <Navbar />
-          <div className="max-w-screen-lg mx-auto p-4">
+          <div className={`${styles.padding} mx-auto`}>
             <div className="mt-8">
-              <h2 className="text-2xl font-bold text-white">Create Project</h2>
+              <h2 className={`${styles.heading2}`}>Create Project</h2>
               {isCreatingProject ? (
                 <div className="mt-4 bg-gray-100 p-4 rounded-md">
-                  <h2 className="text-lg font-semibold">
+                  <h2 className="font-poppins font-semibold text-[24px] text-black leading-[36.8px]">
                     Let's start with the name of your project
                   </h2>
                   <input
@@ -84,7 +84,9 @@ const Home = () => {
                     onClick={() => handleProjectClick(project)}
                     className="bg-white border border-gray-300 rounded-md p-4 cursor-pointer transform transition-transform duration-300 hover:scale-105"
                   >
-                    <h3 className="text-lg">{project.name}</h3>
+                    <h3 className="font-poppins font-semibold text-[24px] text-black leading-[36.8px]">
+                      {project.name}
+                    </h3>
                   </div>
                 ))}
               </div>

@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 import Home from "./pages/Home"
 import ProjectDetails from "./pages/ProjectDetails"
+import ErrorPage from './pages/Error';
 
 const App = () => (
   <Router>
@@ -14,6 +15,7 @@ const App = () => (
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/home" element={<Home />} />
       <Route path="/project/:projectId" element={<ProjectDetails />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   </Router>
 );
