@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
+import Modal2 from "../components/Modal2";
+import Modal4 from "../components/Modal4";
 import styles from "../style";
 
 const ProjectDetails = () => {
@@ -18,7 +20,7 @@ const ProjectDetails = () => {
 
   return (
     <div
-      className="bg-cover bg-center min-h-screen"
+      className="relative bg-cover bg-center min-h-screen"
       style={{
         backgroundImage: "url(../src/assets/bg2.jpg)",
         backgroundSize: "cover",
@@ -28,8 +30,13 @@ const ProjectDetails = () => {
       }}
     >
       <div
-        className={`${styles.paddingX} ${styles.flexCenter} h-full`}
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        className="absolute inset-0 bg-black opacity-50"
+        style={{ zIndex: 1 }}
+      ></div>
+
+      <div
+        className={`${styles.paddingX} ${styles.flexCenter} h-full relative`}
+        style={{ zIndex: 2 }}
       >
         <div className={`${styles.boxWidth} h-full`}>
           <Navbar />
@@ -39,60 +46,56 @@ const ProjectDetails = () => {
             <div className="flex justify-center mt-4">
               <button
                 onClick={() => openModal("modal1")}
-                className="bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105"
+                className="font-poppins bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105 hover:text-secondary"
               >
-                Open Modal 1
+                Active Users
               </button>
               <button
                 onClick={() => openModal("modal2")}
-                className="bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105"
+                className="font-poppins bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105 hover:text-secondary"
               >
-                Open Modal 2
+                Integration
               </button>
+              {/* DOCUMENTATION BUTTON - REDIRECT TO A NOTION PAGE */}
               <button
                 onClick={() => openModal("modal3")}
-                className="bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105"
+                className="font-poppins bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105 hover:text-secondary"
               >
-                Open Modal 3
+                Documentation
               </button>
               <button
                 onClick={() => openModal("modal4")}
-                className="bg-darkGray text-white py-2 px-4 rounded transition duration-300 transform hover:scale-105"
+                className="font-poppins bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105 hover:text-secondary"
               >
-                Open Modal 4
+                Customize UI
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div>
+      <div className="font-poppins">
         {activeModal === "modal1" && (
-          <Modal
-            onClose={closeModal}
-            title="Modal 1"
-            content="This is the content of Modal 1"
-          />
+          <Modal onClose={closeModal} title="Active Users" />
         )}
         {activeModal === "modal2" && (
-          <Modal
+          <Modal2
             onClose={closeModal}
             title="Modal 2"
-            content="This is the content of Modal 2"
           />
         )}
-        {activeModal === "modal3" && (
+        {/* {activeModal === "modal3" && (
           <Modal
             onClose={closeModal}
             title="Modal 3"
             content="This is the content of Modal 3"
           />
-        )}
+        )} */}
         {activeModal === "modal4" && (
-          <Modal
+          <Modal4
             onClose={closeModal}
-            title="Modal 4"
-            content="This is the content of Modal 4"
+            title="Customizable UI components"
+            content="Coming soon..."
           />
         )}
       </div>

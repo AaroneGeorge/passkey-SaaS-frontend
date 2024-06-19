@@ -23,23 +23,22 @@ export const features = [
   {
     id: "feature-1",
     icon: star,
-    title: "Rewards",
-    content:
-      "The best credit cards offer some tantalizing combinations of promotions and prizes",
+    title: "Seamless Integration",
+    content:"Leverage our simple and intuitive APIs to integrate passkey authentication into your existing codebase with minimal hassle"
   },
   {
     id: "feature-2",
     icon: shield,
-    title: "100% Secured",
+    title: "Enhanced Security",
     content:
-      "We take proactive steps make sure your information and transactions are secure.",
+    "Passkeys offer a secure and user-friendly alternative to traditional passwords, protecting your users' data from phishing attacks and credential stuffing."
   },
   {
     id: "feature-3",
     icon: send,
-    title: "Balance Transfer",
+    title: "Comprehensive Documentation",
     content:
-      "A balance transfer credit card can save you a lot of money in interest charges.",
+    "Our detailed documentation guides you through every step, ensuring a smooth integration process."
   },
 ];
 
@@ -73,17 +72,17 @@ export const feedback = [
 export const stats = [
   {
     id: "stats-1",
-    title: "User Active",
+    title: "Developers",
     value: "3800+",
   },
   {
     id: "stats-2",
-    title: "Trusted by Company",
+    title: "Projects",
     value: "230+",
   },
   {
     id: "stats-3",
-    title: "Transaction",
+    title: "Secure Users",
     value: "$230M+",
   },
 ];

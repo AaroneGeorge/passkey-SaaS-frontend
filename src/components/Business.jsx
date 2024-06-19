@@ -22,13 +22,11 @@ const Business = () =>  (
   <section id="features" className={layout.section}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        You do the business, <br className="sm:block hidden" /> we’ll handle
-        the money.
+      Frictionless Passkey<br className="sm:block hidden" /> Authentication Integration
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        With the right credit card, you can improve your financial life by
-        building credit, earning rewards and saving money. But with hundreds
-        of credit cards on the market.
+      With Passkey-Linker, developers can easily enhance their projects with the latest passwordless authentication technology - passkeys. 
+      Our platform streamlines the process of implementing passkey authentication, saving you valuable time and effort.
       </p>
 
       <Button styles={`mt-10`} />

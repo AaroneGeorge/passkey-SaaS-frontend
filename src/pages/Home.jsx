@@ -46,7 +46,7 @@ const Home = () => {
               <h2 className={`${styles.heading2}`}>Create Project</h2>
               {isCreatingProject ? (
                 <div className="mt-4 bg-gray-100 p-4 rounded-md">
-                  <h2 className="font-poppins font-semibold text-[24px] text-black leading-[36.8px]">
+                  <h2 className="font-poppins  text-[24px] text-black leading-[36.8px]">
                     Let's start with the name of your project
                   </h2>
                   <input
@@ -57,13 +57,13 @@ const Home = () => {
                     className="border border-gray-300 rounded-md px-2 py-1 mt-2 w-full"
                   />
                   <button
-                    className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-900 transition duration-300 mt-3 mr-2"
+                    className="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-900 transition duration-300 mt-3 mr-2"
                     onClick={handleProjectNameSubmit}
                   >
                     Submit
                   </button>
                   <button
-                    className="bg-gray-600 text-white font-bold py-2 px-4 rounded hover:bg-gray-800 transition duration-300 mt-2"
+                    className="bg-gray-600 text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 transition duration-300 mt-2"
                     onClick={() => setIsCreatingProject(false)}
                   >
                     Close
