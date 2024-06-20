@@ -1,7 +1,7 @@
 import styles from "../style";
 import GetStarted from "./GetStarted";
-import lockIcon from "../assets/lock.jpg";
 import lockGif from "../assets/lock_gif.webp"
+import { lockIcon } from "../assets";
 
 const Hero = () => {
   return (
@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
           <img src={lockIcon} alt="lock" className="w-[32px] h-[32px]" /> {/* Use the lock icon */}
           <p className={`${styles.paragraph} ml-2`}>
-            <span className="text-white">Secure</span> Your Account With{" "}
+            <span className="text-white">Secure</span> Your Projects With{" "}
             <span className="text-white">Passkey</span> Authentication
           </p>
         </div>

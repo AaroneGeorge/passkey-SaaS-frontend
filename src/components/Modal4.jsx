@@ -7,7 +7,7 @@ const Modal = ({ onClose, title, content }) => {
       <div className="bg-white p-6 rounded-lg shadow-lg z-10">
         <h2 className="text-2xl font-bold">{title}</h2>
         <p className="mt-2">{content}</p>
-        <button onClick={onClose} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+        <button onClick={onClose} className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-rose-700">Close</button>
       </div>
     </div>
   );

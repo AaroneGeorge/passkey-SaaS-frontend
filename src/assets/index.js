@@ -24,6 +24,13 @@ import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
 import system1 from "./system1.png"
+import firebase from "./firebase.svg"
+import npm from "./npm.svg"
+import elliot2 from "./elliot2.jpg"
+import tyrell from "./tyrell.jpg"
+import rachel2 from "./rachel2.jpg"
+import lockIcon from "./lock.jpg"
+import security from "./security.png"
 
 export {
   airbnb,
@@ -52,4 +59,11 @@ export {
   people02,
   people03,
   system1,
+  firebase,
+  npm,
+  elliot2,
+  tyrell,
+  rachel2,
+  lockIcon,
+  security,
 };

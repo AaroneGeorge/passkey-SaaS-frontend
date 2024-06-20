@@ -20,7 +20,7 @@ const Modal2 = ({ onClose, title }) => {
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    alert('Copied to clipboard!');
+    // alert('Copied to clipboard!');
   };
 
   return (
@@ -37,7 +37,7 @@ const Modal2 = ({ onClose, title }) => {
                   <pre className="font-mono">{step.code}</pre>
                   <FontAwesomeIcon
                     icon={faCopy}
-                    className="absolute top-2 right-2 text-2xl text-blue-500 cursor-pointer"
+                    className="absolute top-2 right-2 text-2xl text-blue-500 cursor-pointer hover:scale-110"
                     onClick={() => copyToClipboard(step.code)}
                   />
                 </div>
@@ -45,7 +45,7 @@ const Modal2 = ({ onClose, title }) => {
             </div>
           ))}
         </div>
-        <button onClick={onClose} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+        <button onClick={onClose} className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-rose-700">Close</button>
       </div>
     </div>
   );

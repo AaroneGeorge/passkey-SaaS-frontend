@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import { close, logo, menu } from "../assets";
+import { close, logo, menu, security } from "../assets";
 import { navLinks } from "../constants";
 
 const Navbar = () => {
@@ -9,8 +8,10 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <a href="/">
-        <img src={logo} alt="passkeylinker" className="w-[124px] h-[32px]" />
+      <a href="/" className="flex items-center">
+        <img src={security} alt="passkeylinker" className="w-[35px] h-[35px] mr-2" />
+        <p className="mr-1 font-bold text-white text-xl font-mono">PassKey</p>
+        <p className="text-gradient font-bold text-xl font-mono">Linker</p>
       </a>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
@@ -49,7 +50,7 @@ const Navbar = () => {
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
+                <a href={`${nav.id}`}>{nav.title}</a>
               </li>
             ))}
           </ul>
