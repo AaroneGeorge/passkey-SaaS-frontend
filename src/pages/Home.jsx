@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import Navbar from "../components/Navbar";
 import styles from "../style";
-import { layout } from "../style";
 
 const Home = () => {
   const [projects, setProjects] = useState([]);

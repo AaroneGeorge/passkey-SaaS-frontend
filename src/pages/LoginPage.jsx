@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../components";
 import styles from "../style";
 
-
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,9 +12,7 @@ const LoginPage = () => {
 
   const signIn = async () => {
     try {
-      // Simulate successful login
       console.log("User logged in:", { email });
-      // Redirect to another page upon successful login
       navigate("/Home");
     } catch (err) {
       setLoginError(
@@ -27,7 +24,6 @@ const LoginPage = () => {
 
   const handleForgotPassword = async () => {
     try {
-      // Simulate sending reset password email
       console.log("Password reset email sent to:", { email });
       setResetPasswordSuccess(true);
     } catch (err) {
@@ -36,23 +32,23 @@ const LoginPage = () => {
     }
   };
 
-  return (    
-    <div 
+  return (
+    <div
       className=""
       style={{
         backgroundImage: "url(./src/assets/bg1.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-    > 
+    >
       <div
         className={`${styles.paddingX} ${styles.flexCenter}`}
-        style={{ backgroundColor:"rgba(0, 0, 0, 0.5)"  }}
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       >
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
-      </div> 
+      </div>
       <div className="min-h-screen flex flex-col justify-center items-center">
         <div className="bg-black bg-opacity-80 shadow-lg rounded-lg p-8 w-full max-w-2xl">
           <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full text-center">

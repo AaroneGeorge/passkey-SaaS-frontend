@@ -1,25 +1,41 @@
-import { rachel2, elliot2, tyrell, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star } from "../assets";
+import {
+  rachel2,
+  elliot2,
+  tyrell,
+  facebook,
+  instagram,
+  linkedin,
+  twitter,
+  airbnb,
+  binance,
+  coinbase,
+  dropbox,
+  send,
+  shield,
+  star,
+} from "../assets";
 
 export const features = [
   {
     id: "feature-1",
     icon: star,
     title: "Seamless Integration",
-    content:"Leverage our simple and intuitive APIs to integrate passkey authentication into your existing codebase with minimal hassle"
+    content:
+      "Leverage our simple and intuitive APIs to integrate passkey authentication into your existing codebase with minimal hassle",
   },
   {
     id: "feature-2",
     icon: shield,
     title: "Enhanced Security",
     content:
-    "Passkeys offer a secure and user-friendly alternative to traditional passwords, protecting your users' data from phishing attacks and credential stuffing."
+      "Passkeys offer a secure and user-friendly alternative to traditional passwords, protecting your users' data from phishing attacks and credential stuffing.",
   },
   {
     id: "feature-3",
     icon: send,
     title: "Comprehensive Documentation",
     content:
-    "Our detailed documentation guides you through every step, ensuring a smooth integration process."
+      "Our detailed documentation guides you through every step, ensuring a smooth integration process.",
   },
 ];
 

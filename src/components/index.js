@@ -8,6 +8,9 @@ import Stats from "./Stats";
 import Footer from "./Footer";
 import Testimonials from "./Testimonials";
 import Hero from "./Hero";
+import Modal from "./Modal";
+import Modal2 from "./Modal2";
+import Modal4 from "./Modal4";
 
 export {
   Navbar,
@@ -20,4 +23,7 @@ export {
   Footer,
   Testimonials,
   Hero,
+  Modal,
+  Modal2,
+  Modal4,
 };

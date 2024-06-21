@@ -3,8 +3,14 @@ import styles, { layout } from "../style";
 import Button from "./Button";
 
 const FeatureCard = ({ icon, title, content, index }) => (
-  <div className={`flex flex-row p-6 rounded-[20px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
-    <div className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}>
+  <div
+    className={`flex flex-row p-6 rounded-[20px] ${
+      index !== features.length - 1 ? "mb-6" : "mb-0"
+    } feature-card`}
+  >
+    <div
+      className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
+    >
       <img src={icon} alt="star" className="w-[50%] h-[50%] object-contain" />
     </div>
     <div className="flex-1 flex flex-col ml-3">
@@ -18,15 +24,18 @@ const FeatureCard = ({ icon, title, content, index }) => (
   </div>
 );
 
-const Business = () =>  (
+const Business = () => (
   <section id="features" className={layout.section}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-      Frictionless Passkey<br className="sm:block hidden" /> Authentication Integration
+        Frictionless Passkey
+        <br className="sm:block hidden" /> Authentication Integration
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-      With Passkey-Linker, developers can easily enhance their projects with the latest passwordless authentication technology - passkeys. 
-      Our platform streamlines the process of implementing passkey authentication, saving you valuable time and effort.
+        With Passkey-Linker, developers can easily enhance their projects with
+        the latest passwordless authentication technology - passkeys. Our
+        platform streamlines the process of implementing passkey authentication,
+        saving you valuable time and effort.
       </p>
 
       <Button styles={`mt-10`} />

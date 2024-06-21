@@ -31,6 +31,7 @@ import tyrell from "./tyrell.jpg"
 import rachel2 from "./rachel2.jpg"
 import lockIcon from "./lock.jpg"
 import security from "./security.png"
+import lockgif from "./lock_gif.webp"
 
 export {
   airbnb,
@@ -66,4 +67,5 @@ export {
   rachel2,
   lockIcon,
   security,
+  lockgif,
 };

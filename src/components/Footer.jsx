@@ -3,7 +3,10 @@ import { security } from "../assets";
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => (
-  <section id="socials" className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
+  <section
+    id="socials"
+    className={`${styles.flexCenter} ${styles.paddingY} flex-col`}
+  >
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
         <div className="flex items-center">
@@ -12,8 +15,12 @@ const Footer = () => (
             alt="passkeylinker"
             className="w-[150px] h-[72.14px] object-contain"
           />
-          <p className="font-bold text-white text-4xl font-poppins mr-1">PassKey</p>
-          <p className="text-gradient font-bold text-4xl font-poppins">Linker</p>
+          <p className="font-bold text-white text-4xl font-poppins mr-1">
+            PassKey
+          </p>
+          <p className="text-gradient font-bold text-4xl font-poppins">
+            Linker
+          </p>
         </div>
       </div>
 

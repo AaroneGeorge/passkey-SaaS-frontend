@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Modal from "../components/Modal";
-import Modal2 from "../components/Modal2";
-import Modal4 from "../components/Modal4";
+import { Navbar, Modal, Modal2, Modal4 } from "../components";
 import styles from "../style";
 
 const ProjectDetails = () => {
@@ -79,10 +76,7 @@ const ProjectDetails = () => {
           <Modal onClose={closeModal} title="Active Users" />
         )}
         {activeModal === "modal2" && (
-          <Modal2
-            onClose={closeModal}
-            title="Modal 2"
-          />
+          <Modal2 onClose={closeModal} title="Modal 2" />
         )}
         {/* {activeModal === "modal3" && (
           <Modal
