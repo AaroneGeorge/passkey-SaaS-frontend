@@ -18,7 +18,7 @@ const Navbar = () => {
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         <li className="font-poppins font-normal cursor-pointer text-[16px] text-dimWhite hover:text-white mr-10">
-          <a href="/">Home</a>
+          <a href="/home">Home</a>
         </li>
         <li className="font-poppins font-normal cursor-pointer text-[16px] text-dimWhite hover:text-white mr-10">
           <a
@@ -52,7 +52,7 @@ const Navbar = () => {
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
             <li className="font-poppins font-medium cursor-pointer text-[16px] text-dimWhite hover:text-white mb-4">
-              <a href="/">Home</a>
+              <a href="/Home">Home</a>
             </li>
             <li className="font-poppins font-medium cursor-pointer text-[16px] text-dimWhite hover:text-white mb-4">
               <a
