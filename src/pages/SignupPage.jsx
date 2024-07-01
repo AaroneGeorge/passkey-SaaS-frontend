@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../style";
 import { Navbar } from "../components";
+import { useAuth } from "../config/AuthContext";
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -10,16 +11,18 @@ const SignupPage = () => {
   const [username, setUsername] = useState("");
   const [signupError, setSignupError] = useState("");
   const navigate = useNavigate();
+  const { signUp } = useAuth();
 
-  const signUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
     try {
       if (password !== confirmPassword) {
         setSignupError("Passwords do not match. Please check and try again.");
         return;
       }
 
-      console.log("User signed up:", { email, username });
-
+      await signUp(email, password);
+      // You may want to store additional user info (like username) in Firestore here
       navigate("/Home");
     } catch (err) {
       setSignupError("An error occurred during signup. Please try again.");
@@ -49,7 +52,7 @@ const SignupPage = () => {
           <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full text-center">
             Sign Up / Register
           </h2>
-          <form className="mt-8">
+          <form className="mt-8" onSubmit={handleSignUp}>
             <div className="flex items-center mb-4">
               <label
                 htmlFor="email"
@@ -111,8 +114,7 @@ const SignupPage = () => {
               />
             </div>
             <button
-              type="button"
-              onClick={signUp}
+              type="submit"
               className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Sign Up

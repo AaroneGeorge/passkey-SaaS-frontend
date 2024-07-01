@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../components";
 import styles from "../style";
+import { useAuth } from "../config/AuthContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -9,22 +10,22 @@ const LoginPage = () => {
   const [loginError, setLoginError] = useState("");
   const [resetPasswordSuccess, setResetPasswordSuccess] = useState(false);
   const navigate = useNavigate();
+  const { signIn, resetPassword } = useAuth();
 
-  const signIn = async () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault();
     try {
-      console.log("User logged in:", { email });
+      await signIn(email, password);
       navigate("/Home");
     } catch (err) {
-      setLoginError(
-        "Invalid email or password. Please sign up if you do not have an account."
-      );
+      setLoginError("Invalid email or password. Please try again.");
       console.log(err);
     }
   };
 
   const handleForgotPassword = async () => {
     try {
-      console.log("Password reset email sent to:", { email });
+      await resetPassword(email);
       setResetPasswordSuccess(true);
     } catch (err) {
       setLoginError("Error sending reset password email. Please try again.");
@@ -54,7 +55,7 @@ const LoginPage = () => {
           <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full text-center">
             Login
           </h2>
-          <form className="mt-8">
+          <form className="mt-8" onSubmit={handleSignIn}>
             <div className="flex items-center mb-4">
               <label
                 htmlFor="email"
@@ -86,9 +87,8 @@ const LoginPage = () => {
               />
             </div>
             <button
-              type="button"
+              type="submit"
               className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              onClick={signIn}
             >
               Login
             </button>
@@ -96,7 +96,10 @@ const LoginPage = () => {
               className="forgot-password-link text-white text-center mt-4"
               onClick={handleForgotPassword}
             >
-              <Link className="text-blue-500 hover:text-blue-700">
+              <Link
+                className="text-blue-500 hover:text-blue-700"
+                onClick={handleForgotPassword}
+              >
                 Forgot Password?
               </Link>
             </p>

@@ -1,8 +1,21 @@
 import { useState } from "react";
 import { close, logo, menu, security } from "../assets";
+import { useAuth } from "../config/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const { currentUser, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to log out", error);
+    }
+  };
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
@@ -33,7 +46,11 @@ const Navbar = () => {
           <a href="/#socials">Socials</a>
         </li>
         <li className="font-poppins font-normal cursor-pointer text-[16px] text-dimWhite hover:text-white">
-          <a href="/login">Login</a>
+          {currentUser ? (
+            <button onClick={handleLogout}>Logout</button>
+          ) : (
+            <a href="/login">Login</a>
+          )}
         </li>
       </ul>
 
@@ -67,7 +84,11 @@ const Navbar = () => {
               <a href="/#clients">Socials</a>
             </li>
             <li className="font-poppins font-medium cursor-pointer text-[16px] text-dimWhite hover:text-white">
-              <a href="/login">Login</a>
+              {currentUser ? (
+                <button onClick={handleLogout}>Logout</button>
+              ) : (
+                <a href="/login">Login</a>
+              )}
             </li>
           </ul>
         </div>
