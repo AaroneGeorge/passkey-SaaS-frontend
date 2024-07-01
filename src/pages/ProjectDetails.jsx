@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Navbar, Modal, Modal2, Modal4 } from "../components";
 import styles from "../style";
+import { useAuth } from "../config/AuthContext"; 
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const [activeModal, setActiveModal] = useState(null);
+  const { currentUser } = useAuth(); 
 
   const openModal = (modalId) => {
     setActiveModal(modalId);
@@ -30,7 +32,6 @@ const ProjectDetails = () => {
         className="absolute inset-0 bg-black opacity-50"
         style={{ zIndex: 1 }}
       ></div>
-
       <div
         className={`${styles.paddingX} ${styles.flexCenter} h-full relative`}
         style={{ zIndex: 2 }}
@@ -53,7 +54,6 @@ const ProjectDetails = () => {
               >
                 Integration
               </button>
-              {/* DOCUMENTATION BUTTON - REDIRECT TO A NOTION PAGE */}
               <button
                 onClick={() => openModal("modal3")}
                 className="font-poppins bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105 hover:text-secondary"
@@ -70,21 +70,18 @@ const ProjectDetails = () => {
           </div>
         </div>
       </div>
-
       <div className="font-poppins">
         {activeModal === "modal1" && (
           <Modal onClose={closeModal} title="Active Users" />
         )}
         {activeModal === "modal2" && (
-          <Modal2 onClose={closeModal} title="Modal 2" />
-        )}
-        {/* {activeModal === "modal3" && (
-          <Modal
-            onClose={closeModal}
-            title="Modal 3"
-            content="This is the content of Modal 3"
+          <Modal2 
+            onClose={closeModal} 
+            title="Integration" 
+            developerId={currentUser?.uid} 
+            projectId={projectId} 
           />
-        )} */}
+        )}
         {activeModal === "modal4" && (
           <Modal4
             onClose={closeModal}

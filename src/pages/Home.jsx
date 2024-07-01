@@ -1,28 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import Navbar from "../components/Navbar";
 import styles from "../style";
+import { useAuth } from "../config/AuthContext";
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
   const [isCreatingProject, setIsCreatingProject] = useState(false);
   const [newProjectName, setNewProjectName] = useState("");
   const navigate = useNavigate();
+  const { createProject, getProjects } = useAuth();
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const fetchedProjects = await getProjects();
+      setProjects(fetchedProjects);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
 
   const handleCreateProject = () => {
     setIsCreatingProject(true);
   };
 
-  const handleProjectNameSubmit = () => {
-    const newProject = {
-      name: newProjectName,
-      projectId: uuidv4(),
-    };
-
-    setProjects([...projects, newProject]);
-    setNewProjectName("");
-    setIsCreatingProject(false);
+  const handleProjectNameSubmit = async () => {
+    try {
+      const newProject = await createProject(newProjectName);
+      setProjects([...projects, newProject]);
+      setNewProjectName("");
+      setIsCreatingProject(false);
+    } catch (error) {
+      console.error("Error creating project:", error);
+    }
   };
 
   const handleProjectClick = (project) => {
@@ -84,7 +98,7 @@ const Home = () => {
                     className="bg-white border border-gray-300 rounded-md p-4 cursor-pointer transform transition-transform duration-300 hover:scale-105"
                   >
                     <h3 className="font-poppins font-semibold text-[24px] text-black leading-[36.8px]">
-                      {project.name}
+                      {project.projectName}
                     </h3>
                   </div>
                 ))}

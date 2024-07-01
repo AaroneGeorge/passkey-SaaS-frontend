@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
-const Modal2 = ({ onClose, title }) => {
+const Modal2 = ({ onClose, title, developerId, projectId }) => {
   const steps = [
     {
       title: "step 1: INSTALL OUR NPM PACKAGE",
@@ -10,7 +10,7 @@ const Modal2 = ({ onClose, title }) => {
     },
     {
       title: "step 2: COPY PASTE THESE CREDENTIALS",
-      code: `DEVELOPER_ID = d-skj-9d14g2fe3\nPROJECT_ID = c18ed5dc-0f07-4127-bab9-a5e096632351`,
+      code: `DEVELOPER_ID = ${developerId}\nPROJECT_ID = ${projectId}`,
     },
     {
       title:
@@ -21,7 +21,7 @@ const Modal2 = ({ onClose, title }) => {
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    // alert('Copied to clipboard!');
+    // add some notifications (work for later)
   };
 
   return (

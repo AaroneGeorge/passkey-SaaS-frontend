@@ -21,8 +21,7 @@ const SignupPage = () => {
         return;
       }
 
-      await signUp(email, password);
-      // You may want to store additional user info (like username) in Firestore here
+      await signUp(email, password, username);
       navigate("/Home");
     } catch (err) {
       setSignupError("An error occurred during signup. Please try again.");
