@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Navbar, Modal, Modal2, Modal4 } from "../components";
 import styles from "../style";
-import { useAuth } from "../config/AuthContext"; 
+import { useAuth } from "../config/AuthContext";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const [activeModal, setActiveModal] = useState(null);
-  const { currentUser } = useAuth(); 
+  const { currentUser } = useAuth();
 
   const openModal = (modalId) => {
     setActiveModal(modalId);
@@ -75,11 +75,11 @@ const ProjectDetails = () => {
           <Modal onClose={closeModal} title="Active Users" />
         )}
         {activeModal === "modal2" && (
-          <Modal2 
-            onClose={closeModal} 
-            title="Integration" 
-            developerId={currentUser?.uid} 
-            projectId={projectId} 
+          <Modal2
+            onClose={closeModal}
+            title="Integration"
+            developerId={currentUser?.uid}
+            projectId={projectId}
           />
         )}
         {activeModal === "modal4" && (

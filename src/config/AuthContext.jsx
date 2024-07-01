@@ -1,9 +1,23 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { auth, db } from './firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut as firebaseSignOut, sendPasswordResetEmail, updateEmail as firebaseUpdateEmail, updatePassword as firebaseUpdatePassword } from 'firebase/auth';
-import { doc, setDoc, updateDoc, serverTimestamp, collection, addDoc, getDocs } from 'firebase/firestore';
-import { v4 as uuidv4 } from 'uuid';
-
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { auth, db } from "./firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut as firebaseSignOut,
+  sendPasswordResetEmail,
+  updateEmail as firebaseUpdateEmail,
+  updatePassword as firebaseUpdatePassword,
+} from "firebase/auth";
+import {
+  doc,
+  setDoc,
+  updateDoc,
+  serverTimestamp,
+  collection,
+  addDoc,
+  getDocs,
+} from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 const AuthContext = createContext();
 
@@ -17,15 +31,19 @@ export const AuthProvider = ({ children }) => {
 
   const signUp = async (email, password, username) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-      
+
       // Create a new document in the 'devs' collection
-      await setDoc(doc(db, 'devs', user.uid), {
+      await setDoc(doc(db, "devs", user.uid), {
         email: user.email,
         username: username,
         createdAt: serverTimestamp(),
-        DEVELOPER_ID: user.uid
+        DEVELOPER_ID: user.uid,
       });
 
       return user;
@@ -61,7 +79,7 @@ export const AuthProvider = ({ children }) => {
     const newProject = {
       projectName,
       projectId: uuidv4(),
-      createdAt: serverTimestamp()
+      createdAt: serverTimestamp(),
     };
 
     try {
@@ -78,14 +96,14 @@ export const AuthProvider = ({ children }) => {
     const projectsRef = collection(db, `devs/${currentUser.uid}/projects`);
     try {
       const snapshot = await getDocs(projectsRef);
-      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       throw error;
     }
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
     });
@@ -102,7 +120,7 @@ export const AuthProvider = ({ children }) => {
     updateEmail,
     updatePassword,
     createProject,
-    getProjects
+    getProjects,
   };
 
   return (

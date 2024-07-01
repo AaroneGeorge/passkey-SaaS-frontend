@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthProvider } from './config/AuthContext';
+import { AuthProvider } from "./config/AuthContext";
 import Root from "./pages/Root";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
@@ -16,21 +16,21 @@ const App = () => (
         <Route path="/" element={<Root />} />
         <Route path="/register" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route 
-          path="/home" 
+        <Route
+          path="/home"
           element={
             <PrivateRoute>
               <Home />
             </PrivateRoute>
-          } 
+          }
         />
-        <Route 
-          path="/project/:projectId" 
+        <Route
+          path="/project/:projectId"
           element={
             <PrivateRoute>
               <ProjectDetails />
             </PrivateRoute>
-          } 
+          }
         />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
