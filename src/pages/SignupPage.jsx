@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../style";
 import { Navbar } from "../components";
 import { useAuth } from "../config/AuthContext";
+import bg1 from '../assets/bg1.jpg'
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const SignupPage = () => {
     <div
       className=""
       style={{
-        backgroundImage: "url(./src/assets/bg1.jpg)",
+        backgroundImage: `url(${bg1})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

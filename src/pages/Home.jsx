@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import styles from "../style";
 import { useAuth } from "../config/AuthContext";
+import bg1 from '../assets/bg1.jpg'
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
@@ -46,7 +47,7 @@ const Home = () => {
   return (
     <div
       className="bg-cover bg-center h-screen"
-      style={{ backgroundImage: "url(./src/assets/bg2.jpg)" }}
+      style={{ backgroundImage: `url(${bg1})` }}
     >
       <div
         className={`${styles.paddingX} ${styles.flexCenter} h-full`}

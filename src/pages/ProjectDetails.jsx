@@ -4,7 +4,7 @@ import { Navbar, Modal, Modal2, Modal4 } from "../components";
 import styles from "../style";
 import { useAuth } from "../config/AuthContext";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
-
+import bg2 from '../assets/bg2.jpg'
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -43,7 +43,7 @@ const ProjectDetails = () => {
     <div
       className="relative bg-cover bg-center min-h-screen"
       style={{
-        backgroundImage: "url(../src/assets/bg2.jpg)",
+        backgroundImage: `url(${bg2})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "scroll",
