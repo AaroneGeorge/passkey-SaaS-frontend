@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Navbar, Modal, Modal2, Modal4 } from "../components";
 import styles from "../style";
 import { useAuth } from "../config/AuthContext";
+import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
+
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -10,6 +12,24 @@ const ProjectDetails = () => {
   const projectName = location.state?.projectName || "Unknown Project";
   const [activeModal, setActiveModal] = useState(null);
   const { currentUser } = useAuth();
+  const [documentId, setDocumentId] = useState(null);
+
+  useEffect(() => {
+    const fetchDocumentId = async () => {
+      const db = getFirestore();
+      const q = query(collection(db, `/devs/${currentUser?.uid}/projects`), where("projectId", "==", projectId));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const doc = querySnapshot.docs[0];
+        setDocumentId(doc.id);
+      } else {
+        console.log("No matching documents.");
+      }
+    };
+
+    fetchDocumentId();
+  }, [projectId]);
 
   const openModal = (modalId) => {
     setActiveModal(modalId);
@@ -87,7 +107,7 @@ const ProjectDetails = () => {
             onClose={closeModal}
             title="Integration"
             developerId={currentUser?.uid}
-            projectId={projectId}
+            projectId={documentId}
           />
         )}
         {activeModal === "modal4" && (
