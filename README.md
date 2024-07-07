@@ -1,4 +1,4 @@
-## Working on progress....
+### Passkey Linker v1.0.0 released
 
 ```bash
 npm install
