@@ -75,7 +75,11 @@ const ProjectDetails = () => {
       </div>
       <div className="font-poppins">
         {activeModal === "modal1" && (
-          <Modal onClose={closeModal} title="Active Users" />
+          <Modal
+            onClose={closeModal}
+            title="Active Users"
+            projectId={projectId}
+          />
         )}
         {activeModal === "modal2" && (
           <Modal2

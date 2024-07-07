@@ -14,8 +14,11 @@ import {
   updateDoc,
   serverTimestamp,
   collection,
+  query, 
+  where,
   addDoc,
   getDocs,
+  getDoc,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
@@ -102,6 +105,49 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getProjectUsers = async (developerId, projectId) => {
+    try {
+      // First, get the developer document
+      const devDocRef = doc(db, "devs", developerId);
+      const devDocSnap = await getDoc(devDocRef);
+  
+      if (!devDocSnap.exists()) {
+        console.log("No such developer!");
+        return [];
+      }
+  
+      // Now, get the project document
+      const projectsRef = collection(devDocRef, "projects");
+      const projectQuery = query(projectsRef, where("projectId", "==", projectId));
+      const projectSnapshot = await getDocs(projectQuery);
+  
+      if (projectSnapshot.empty) {
+        console.log("No matching project found");
+        return [];
+      }
+  
+      const projectDoc = projectSnapshot.docs[0];
+  
+      // Construct the path to the users subcollection
+      const usersRef = collection(db, `devs/${devDocSnap.id}/projects/${projectDoc.id}/users`);
+      const usersSnapshot = await getDocs(usersRef);
+  
+      if (usersSnapshot.empty) {
+        console.log("No users found for this project");
+        return [];
+      }
+  
+      return usersSnapshot.docs.map(doc => ({
+        id: doc.data().id,
+        username: doc.data().username,
+        createdAt: doc.data().createdAt
+      }));
+    } catch (error) {
+      console.error("Error fetching project users:", error);
+      throw error;
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -121,6 +167,7 @@ export const AuthProvider = ({ children }) => {
     updatePassword,
     createProject,
     getProjects,
+    getProjectUsers,
   };
 
   return (

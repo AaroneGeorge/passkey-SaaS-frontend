@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../config/AuthContext";
 
-const Modal = ({ onClose, title }) => {
-  const dummyData = [
-    { username: "user1", createdAt: "2024-01-01", userId: "1" },
-    { username: "user2", createdAt: "2024-01-02", userId: "2" },
-    { username: "user3", createdAt: "2024-01-03", userId: "3" },
-    { username: "user4", createdAt: "2024-01-04", userId: "4" },
-    { username: "user5", createdAt: "2024-01-05", userId: "5" },
-    { username: "user6", createdAt: "2024-01-06", userId: "6" },
-    { username: "user7", createdAt: "2024-01-07", userId: "7" },
-    { username: "user8", createdAt: "2024-01-08", userId: "8" },
-    { username: "user9", createdAt: "2024-01-09", userId: "9" },
-    { username: "user10", createdAt: "2024-01-10", userId: "10" },
-  ];
+const Modal = ({ onClose, title, projectId }) => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { getProjectUsers, currentUser } = useAuth();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const usersData = await getProjectUsers(currentUser.uid, projectId);
+        setUsers(usersData);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, [projectId, getProjectUsers, currentUser]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -22,30 +29,36 @@ const Modal = ({ onClose, title }) => {
       ></div>
       <div className="bg-white p-6 rounded-lg shadow-lg z-10 max-w-3xl w-full">
         <h2 className="text-2xl font-bold">{title}</h2>
-        <table className="mt-4 w-full border-collapse border border-gray-200">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Username</th>
-              <th className="border border-gray-300 px-4 py-2">Created At</th>
-              <th className="border border-gray-300 px-4 py-2">User ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dummyData.map((user, index) => (
-              <tr key={index}>
-                <td className="border border-gray-300 px-4 py-2">
-                  {user.username}
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  {user.createdAt}
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  {user.userId}
-                </td>
+        {loading ? (
+          <p>Loading...</p>
+        ) : users.length > 0 ? (
+          <table className="mt-4 w-full border-collapse border border-gray-200">
+            <thead>
+              <tr>
+                <th className="border border-gray-300 px-4 py-2">Username</th>
+                <th className="border border-gray-300 px-4 py-2">CreatedAt</th>
+                <th className="border border-gray-300 px-4 py-2">User ID</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {user.username}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {user.createdAt?.toDate().toLocaleString() || "N/A"}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {user.id}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No users!</p>
+        )}
         <button
           onClick={onClose}
           className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-rose-700"
