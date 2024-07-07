@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Navbar, Modal, Modal2, Modal4 } from "../components";
 import styles from "../style";
 import { useAuth } from "../config/AuthContext";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
+  const location = useLocation();
+  const projectName = location.state?.projectName || "Unknown Project";
   const [activeModal, setActiveModal] = useState(null);
   const { currentUser } = useAuth();
 
@@ -40,6 +42,7 @@ const ProjectDetails = () => {
           <Navbar />
           <div className={`mt-10 h-full flex-col text-white`}>
             <h2 className={styles.heading2}>Project Details</h2>
+            <p className={styles.paragraph}>Project Name: {projectName}</p>
             <p className={styles.paragraph}>Project ID: {projectId}</p>
             <div className="flex justify-center mt-4">
               <button

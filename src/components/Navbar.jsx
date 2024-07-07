@@ -35,7 +35,7 @@ const Navbar = () => {
         </li>
         <li className="font-poppins font-normal cursor-pointer text-[16px] text-dimWhite hover:text-white mr-10">
           <a
-            href="https://www.npmjs.com/"
+            href="https://www.npmjs.com/package/passkey_linker"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -73,7 +73,7 @@ const Navbar = () => {
             </li>
             <li className="font-poppins font-medium cursor-pointer text-[16px] text-dimWhite hover:text-white mb-4">
               <a
-                href="https://www.google.com"
+                href="https://www.npmjs.com/package/passkey_linker"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -40,7 +40,7 @@ const Home = () => {
   };
 
   const handleProjectClick = (project) => {
-    navigate(`/project/${project.projectId}`);
+    navigate(`/project/${project.projectId}`, { state: { projectName: project.projectName } });
   };
 
   return (
