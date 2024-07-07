@@ -58,10 +58,11 @@ const ProjectDetails = () => {
                 Integration
               </button>
               <button
-                onClick={() => openModal("modal3")}
                 className="font-poppins bg-darkGray text-white py-2 px-4 rounded mr-4 transition duration-300 transform hover:scale-105 hover:text-secondary"
               >
-                Documentation
+                <a href="https://ash-fork-f07.notion.site/Passkey_linker-Documentation-2a365607b5e149ed9d2109315b096974" target="_blank">
+                  Documentation
+                </a>
               </button>
               <button
                 onClick={() => openModal("modal4")}
